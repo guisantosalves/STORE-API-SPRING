@@ -6,4 +6,6 @@ import com.project.solinium.model.Providers;
 
 public interface ProvidersServ {
     List<Providers> findAllProviders();
+    
+    Providers creatingProviders(Providers providers);
 }

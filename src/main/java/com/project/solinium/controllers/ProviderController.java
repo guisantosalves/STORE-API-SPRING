@@ -6,6 +6,7 @@ import org.apache.catalina.connector.Response;
 import org.apache.coyote.http11.Http11InputBuffer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,4 +28,8 @@ public class ProviderController {
         return new ResponseEntity<List<Providers>>(providersServImpl.findAllProviders(), HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Providers> creatingProviders(@RequestBody Providers providers){
+        return new ResponseEntity<Providers>(providersServImpl.creatingProviders(providers), HttpStatus.OK);
+    }
 }

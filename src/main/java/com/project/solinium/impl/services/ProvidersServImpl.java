@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.introspect.AccessorNamingStrategy.Provider;
 import com.project.solinium.model.Providers;
 import com.project.solinium.repository.ProvidersRepo;
 import com.project.solinium.services.ProvidersServ;
@@ -20,5 +21,10 @@ public class ProvidersServImpl implements ProvidersServ {
     @Override
     public List<Providers> findAllProviders(){
         return providersRepo.findAll();
+    }
+
+    @Override
+    public Providers creatingProviders(Providers providers){
+        return providersRepo.save(providers);
     }
 }
