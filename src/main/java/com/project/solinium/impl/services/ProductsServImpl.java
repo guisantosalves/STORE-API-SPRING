@@ -27,5 +27,16 @@ public class ProductsServImpl implements ProductsServ{
     public Products insertProduct(Products products){
         return productsRepo.save(products);
     }
-    
+
+    @Override
+    public void deleteProductById(Integer id){
+
+        Products verifyingProduct = productsRepo.findById(id)
+            .orElseThrow(() -> new IllegalStateException("Id does not exist!!"));
+        
+        if(verifyingProduct != null){
+            productsRepo.deleteById(id);
+        }    
+
+    }
 }

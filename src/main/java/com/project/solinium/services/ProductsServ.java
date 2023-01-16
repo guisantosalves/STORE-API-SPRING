@@ -8,4 +8,6 @@ public interface ProductsServ {
     List<Products> findAllProducts();
 
     Products insertProduct(Products products);
+
+    void deleteProductById(Integer id);
 }
