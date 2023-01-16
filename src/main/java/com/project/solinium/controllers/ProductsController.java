@@ -28,13 +28,23 @@ public class ProductsController {
         return new ResponseEntity<List<Products>>(productsServ.findAllProducts(), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "{productId}", method = RequestMethod.GET)
+    public ResponseEntity<Products> getProductById(@PathVariable("productId") Integer id){
+        return new ResponseEntity<Products>(productsServ.findProductById(id), HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Products> creatingProduct(@RequestBody Products products){
         return new ResponseEntity<Products>(productsServ.insertProduct(products), HttpStatus.OK);
     }
 
     @RequestMapping(path = "{productId}", method = RequestMethod.DELETE)
-    public void deletingProduct(@PathVariable("productId") Integer id){
-        productsServ.deleteProductById(id);
+    public ResponseEntity<Products> deletingProduct(@PathVariable("productId") Integer id){
+        return new ResponseEntity<Products>(productsServ.deleteProductById(id), HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "{productId}", method = RequestMethod.PUT)
+    public ResponseEntity<Products> updatingById(@PathVariable("productId") Integer id, @RequestBody Products products){
+        return new ResponseEntity<Products>(productsServ.updatingById(id, products), HttpStatus.OK);
     }
 }

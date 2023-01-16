@@ -7,7 +7,11 @@ import com.project.solinium.model.Products;
 public interface ProductsServ {
     List<Products> findAllProducts();
 
+    Products findProductById(Integer id);
+
     Products insertProduct(Products products);
 
-    void deleteProductById(Integer id);
+    Products deleteProductById(Integer id);
+
+    Products updatingById(Integer id, Products products);
 }
