@@ -29,7 +29,11 @@ public class Providers {
     private String address;
     private Boolean active;
 
-    @OneToMany(targetEntity = Products.class, mappedBy = "providers", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(
+        targetEntity = Products.class, 
+        mappedBy = "providers",
+        fetch = FetchType.LAZY, cascade = CascadeType.ALL
+    )
     private Set<Products> Products;
 
 }
